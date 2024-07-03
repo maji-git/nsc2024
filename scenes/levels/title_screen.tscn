@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3sp4xpyeljh6"]
+
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_7qm57"]
+[ext_resource type="Texture2D" uid="uid://cyq4d3is4crls" path="res://assets/title/title_backdrop.png" id="1_rl4nv"]
+[ext_resource type="PackedScene" uid="uid://dberq6pqe725j" path="res://scenes/levels/main_game.tscn" id="2_8lq4f"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_7qm57")
+main_scene = ExtResource("2_8lq4f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(964.855, 544.25)
+scale = Vector2(1.00402, 1.00324)
+texture = ExtResource("1_rl4nv")
+
+[node name="VBOXContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -121.0
+offset_right = 276.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBOXContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "Synced City"
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/VBOXContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionButton" type="Button" parent="CanvasLayer/VBOXContainer"]
+layout_mode = 2
+text = "Option"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBOXContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="CanvasLayer/VBOXContainer/PlayButton" to="." method="_on_play_button_pressed"]
