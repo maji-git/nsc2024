@@ -1,0 +1,272 @@
+[gd_scene load_steps=5 format=3 uid="uid://vrx5838eikbs"]
+
+[ext_resource type="Texture2D" uid="uid://cyq4d3is4crls" path="res://assets/title/title_backdrop.png" id="1_c4rvs"]
+[ext_resource type="Script" path="res://scenes/levels/class_select.gd" id="1_wjonh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xoqju"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yeelm"]
+size = Vector2(300, 500)
+
+[node name="ClassSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wjonh")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_c4rvs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.568627)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Select Your Class"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 30
+columns = 4
+
+[node name="WarriorSelector" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Warrior"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/GridContainer/WarriorSelector"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Stats:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
+layout_mode = 2
+text = "HP: 2/5"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
+layout_mode = 2
+text = "ATK: 2/5"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
+layout_mode = 2
+text = "SPD: 2/5"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/GridContainer/WarriorSelector"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/WarriorSelector"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_yeelm")
+
+[node name="SelectWarrior" type="Button" parent="VBoxContainer/GridContainer/WarriorSelector"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select"
+
+[node name="SharpshooterSelector" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sharpshooter"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Stats:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+layout_mode = 2
+text = "HP: 2/5"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+layout_mode = 2
+text = "ATK: 2/5"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+layout_mode = 2
+text = "SPD: 2/5"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_yeelm")
+
+[node name="SelectSharpshooter" type="Button" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select"
+
+[node name="MageSelector" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Mage"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/GridContainer/MageSelector"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Stats:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
+layout_mode = 2
+text = "HP: 2/5"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
+layout_mode = 2
+text = "ATK: 2/5"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
+layout_mode = 2
+text = "SPD: 2/5"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/GridContainer/MageSelector"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/MageSelector"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_yeelm")
+
+[node name="SelectMage" type="Button" parent="VBoxContainer/GridContainer/MageSelector"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select"
+
+[node name="TheifSelector" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Theif"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/GridContainer/TheifSelector"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Stats:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
+layout_mode = 2
+text = "HP: 2/5"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
+layout_mode = 2
+text = "ATK: 2/5"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
+layout_mode = 2
+text = "SPD: 2/5"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/GridContainer/TheifSelector"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/TheifSelector"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_yeelm")
+
+[node name="SelectThief" type="Button" parent="VBoxContainer/GridContainer/TheifSelector"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select"
+
+[connection signal="pressed" from="VBoxContainer/GridContainer/WarriorSelector/SelectWarrior" to="." method="_on_warrior_selected"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/SharpshooterSelector/SelectSharpshooter" to="." method="_on_select_sharpshooter_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/MageSelector/SelectMage" to="." method="_on_select_mage_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/TheifSelector/SelectThief" to="." method="_on_select_thief_pressed"]

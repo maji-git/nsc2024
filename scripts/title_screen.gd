@@ -1,7 +1,7 @@
 class_name TitleScreen
-extends Node2D
+extends Control
 
-@export var main_scene: PackedScene
+@export var next_scene: PackedScene
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_packed(main_scene)
+	get_tree().change_scene_to_packed(next_scene)
