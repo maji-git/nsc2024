@@ -25,6 +25,6 @@ func enter():
 			animated_sprite.flip_h = false
 
 
-func physics_process(delta):
+func physics_process(_delta):
 	if player.dir != Vector2.ZERO:
 		Transitioned.emit(self, "walk")

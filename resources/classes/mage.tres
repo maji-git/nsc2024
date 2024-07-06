@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ClassStats" load_steps=2 format=3 uid="uid://diqqcn4mxitsg"]
+
+[ext_resource type="Script" path="res://resources/class_stats.gd" id="1_0je8o"]
+
+[resource]
+script = ExtResource("1_0je8o")
+HP = 1
+MP = 2
+ATK = 1
+SPD = 1

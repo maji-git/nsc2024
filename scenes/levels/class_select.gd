@@ -1,21 +1,20 @@
 extends Control
 class_name ClassSelect
 
-
-func _ready():
-	pass
-
-
-func _process(delta):
-	pass
+signal class_selected(class_type: GlobalUtils.CharactorClass)
+@export var main_scene: PackedScene
 
 
-func select_class(btn_id):
-	var btns: Array[String] = [
-		"warrior"
+func select_class(btn_id: int):
+	var classes: Array[GlobalUtils.CharactorClass] = [
+		GlobalUtils.CharactorClass.WARRIOR,
+		GlobalUtils.CharactorClass.SHARPSHOOTER,
+		GlobalUtils.CharactorClass.MAGE,
+		GlobalUtils.CharactorClass.THEIF
 	]
 	
-	btns[btn_id-1]
+	print("class %s"%btn_id)
+	class_selected.emit(classes[btn_id - 1])
 
 
 func _on_warrior_selected():

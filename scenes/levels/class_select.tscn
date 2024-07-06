@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://vrx5838eikbs"]
 
-[ext_resource type="Texture2D" uid="uid://cyq4d3is4crls" path="res://assets/title/title_backdrop.png" id="1_c4rvs"]
 [ext_resource type="Script" path="res://scenes/levels/class_select.gd" id="1_wjonh"]
+[ext_resource type="PackedScene" uid="uid://dberq6pqe725j" path="res://scenes/levels/main_game.tscn" id="2_35pt4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xoqju"]
 
@@ -16,21 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wjonh")
-
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_c4rvs")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.568627)
+main_scene = ExtResource("2_35pt4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

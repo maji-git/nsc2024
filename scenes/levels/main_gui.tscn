@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnvrpqgoxo41k"]
+[gd_scene load_steps=11 format=3 uid="uid://bnvrpqgoxo41k"]
 
 [ext_resource type="Script" path="res://scenes/levels/gui_controller.gd" id="1_2uar2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nm2op"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hjhwe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_krypj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k0bt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47qn6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4vti"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1agti"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iy3vb"]
 
@@ -14,10 +24,10 @@
 script = ExtResource("1_2uar2")
 
 [node name="PointsPanel" type="Panel" parent="."]
-offset_left = 20.0
+offset_left = 34.0
 offset_top = 20.0
-offset_right = 210.0
-offset_bottom = 90.0
+offset_right = 224.0
+offset_bottom = 124.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PointsPanel"]
 layout_mode = 1
@@ -27,22 +37,34 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -47.5
-offset_top = -25.0
+offset_top = -38.5
 offset_right = 47.5
-offset_bottom = 25.0
+offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="VBoxLabels" type="VBoxContainer" parent="PointsPanel/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="HPLabel" type="Label" parent="PointsPanel/HBoxContainer/VBoxLabels"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "HP: 100/100"
+horizontal_alignment = 1
 
 [node name="MPLabel" type="Label" parent="PointsPanel/HBoxContainer/VBoxLabels"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "MP: 100/100"
+horizontal_alignment = 1
+
+[node name="ClassLabel" type="Label" parent="PointsPanel/HBoxContainer/VBoxLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Class: Mage"
+horizontal_alignment = 1
 
 [node name="AbilitiesPanel" type="Panel" parent="."]
 anchors_preset = 7
@@ -345,15 +367,14 @@ text = "E"
 
 [node name="InventoryPanel" type="Panel" parent="."]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -643.0
+offset_left = -724.0
 offset_top = -356.0
-offset_right = 643.0
+offset_right = 724.0
 offset_bottom = 322.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -386,8 +407,8 @@ alignment = 1
 
 [node name="HContainer" type="HBoxContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_constants/separation = 30
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer"]
 layout_mode = 2
@@ -397,56 +418,88 @@ theme_override_constants/separation = 7
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/HPUpgrade"]
+[node name="HPSLabel" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/HPUpgrade"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "HP: 99"
+text = "HP : 1"
 
 [node name="Button" type="Button" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/HPUpgrade"]
 layout_mode = 2
+disabled = true
 text = "+"
 
 [node name="MPUpgrade" type="HBoxContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/MPUpgrade"]
+[node name="MPSLabel" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/MPUpgrade"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "MP: 99"
+text = "MP : 1"
 
 [node name="Button" type="Button" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/MPUpgrade"]
 layout_mode = 2
+disabled = true
 text = "+"
 
-[node name="DEFUpgrade" type="HBoxContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer"]
+[node name="ATKUpgrade" type="HBoxContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/DEFUpgrade"]
+[node name="ATKLabel" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/ATKUpgrade"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "DEF: 99"
+text = "ATK: 1"
 
-[node name="Button" type="Button" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/DEFUpgrade"]
+[node name="Button" type="Button" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/ATKUpgrade"]
 layout_mode = 2
+disabled = true
+text = "+"
+
+[node name="SPDUpgrade" type="HBoxContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="SPDLabel" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/SPDUpgrade"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SPD: 1"
+
+[node name="Button" type="Button" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/SPDUpgrade"]
+layout_mode = 2
+disabled = true
 text = "+"
 
 [node name="GridContainer" type="GridContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/GridContainer"]
+[node name="LevelLabel" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "LVL: 33
-EXP: 10000/1000000"
+text = "LVL: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/GridContainer"]
+[node name="XPLabel" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-value = 100.0
+text = "EXP: 0/400"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XPProgressBar" type="ProgressBar" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/HContainer/GridContainer"]
+layout_mode = 2
+text = "Skill Points: 0"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -471,6 +524,32 @@ layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_krypj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4k0bt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_47qn6")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_i4vti")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1agti")
+
 [node name="CenterContainer2" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
 
@@ -479,6 +558,19 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer2/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
 
 [node name="CenterContainer3" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
@@ -489,6 +581,19 @@ layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer3/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
+
 [node name="CenterContainer4" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
 
@@ -497,6 +602,19 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer4/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
 
 [node name="CenterContainer5" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
@@ -507,6 +625,19 @@ layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer5/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
+
 [node name="CenterContainer6" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
 
@@ -515,6 +646,19 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer6/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
 
 [node name="CenterContainer7" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
@@ -525,6 +669,19 @@ layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer7/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
+
 [node name="CenterContainer8" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
 
@@ -533,6 +690,19 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer8/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
 
 [node name="CenterContainer9" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
@@ -543,6 +713,19 @@ layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer9/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
+
 [node name="CenterContainer10" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
 
@@ -551,6 +734,19 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer10/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
 
 [node name="CenterContainer11" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
@@ -561,6 +757,19 @@ layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer11/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
+
 [node name="CenterContainer12" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
 
@@ -569,6 +778,19 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer12/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
 
 [node name="CenterContainer13" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
@@ -579,6 +801,19 @@ layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer13/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
+
 [node name="CenterContainer14" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
 
@@ -587,6 +822,19 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer14/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
 
 [node name="CenterContainer15" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
@@ -597,6 +845,19 @@ layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer15/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
+
 [node name="CenterContainer16" type="CenterContainer" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
 layout_mode = 2
 
@@ -605,6 +866,19 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hjhwe")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer16/TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_right = -3.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "99"
+horizontal_alignment = 1
 
 [node name="VSeparator2" type="VSeparator" parent="InventoryPanel/Grid/HBoxContainer"]
 layout_mode = 2
@@ -750,3 +1024,5 @@ text = "asdasda"
 [node name="Label2" type="Label" parent="InventoryPanel/Grid/VBoxContainer3"]
 layout_mode = 2
 text = "asdasda"
+
+[connection signal="pressed" from="InventoryPanel/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer/TextureRect/Button" to="." method="_on_button_pressed"]

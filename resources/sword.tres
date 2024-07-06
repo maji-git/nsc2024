@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://w7aosmlpmusk"]
+
+[ext_resource type="Script" path="res://resources/item.gd" id="1_nykwd"]
+[ext_resource type="PackedScene" uid="uid://bvrxga3umnfl1" path="res://scenes/objects/sword.tscn" id="1_u78u0"]
+
+[resource]
+script = ExtResource("1_nykwd")
+name = "Sword"
+scene = ExtResource("1_u78u0")

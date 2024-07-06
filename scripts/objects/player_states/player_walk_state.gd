@@ -7,7 +7,7 @@ func enter():
 	print('player started walking!')
 
 
-func physics_process(delta):
+func physics_process(_delta):
 	player.velocity = player.dir * player.speed
 	match player.dir:
 		Vector2.RIGHT:

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddi2i2xbkbxxl"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_h2bax"]
+[ext_resource type="PackedScene" uid="uid://vrx5838eikbs" path="res://scenes/levels/class_select.tscn" id="1_npf43"]
+[ext_resource type="Texture2D" uid="uid://cyq4d3is4crls" path="res://assets/title/title_backdrop.png" id="2_1xjup"]
+[ext_resource type="PackedScene" uid="uid://dberq6pqe725j" path="res://scenes/levels/main_game.tscn" id="2_w0rru"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_h2bax")
+
+[node name="ClassSelectWindow" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="ClassSelectWindow"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="ClassSelectWindow/Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_1xjup")
+
+[node name="ColorRect" type="ColorRect" parent="ClassSelectWindow/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.568627)
+
+[node name="ClassSelect" parent="ClassSelectWindow/Control" instance=ExtResource("1_npf43")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="MainGame" parent="." instance=ExtResource("2_w0rru")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="game_started" from="." to="MainGame" method="_on_game_game_started"]
+[connection signal="class_selected" from="ClassSelectWindow/Control/ClassSelect" to="." method="_on_class_select_class_selected"]
