@@ -11,9 +11,9 @@ func _input(event):
 	if event.is_action_pressed("open inventory"):
 		inventory_toggled.emit()
 	
-	if event.is_action_pressed("primary attack"):
-		var mouse_pos = get_viewport().get_mouse_position()
-		GlobalUtils.new().get_cursor_quadrant(mouse_pos, player)
+	#if event.is_action_pressed("primary attack"):
+		#var mouse_pos = get_viewport().get_mouse_position()
+		#GlobalUtils.new().get_cursor_quadrant(mouse_pos, player)
 
 
 func _on_game_game_started(player_class: GlobalUtils.CharactorClass):

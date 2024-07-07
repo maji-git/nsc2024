@@ -8,3 +8,9 @@ HP = 2
 MP = 1
 ATK = 1
 SPD = 0
+MULTIPLIER = {
+"ATK": 2,
+"HP": 2,
+"MP": 2,
+"SPD": 2
+}
