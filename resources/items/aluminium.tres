@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://capbnf1d3scry"]
+
+[ext_resource type="Script" path="res://resources/item.gd" id="1_02s3w"]
+[ext_resource type="Texture2D" uid="uid://dnbt3ngdfuw5j" path="res://assets/items/aluminium.png" id="1_rp2wj"]
+[ext_resource type="PackedScene" uid="uid://dfnmkecsuml3g" path="res://resources/items/aluminium.tscn" id="2_5d7o6"]
+
+[resource]
+script = ExtResource("1_02s3w")
+name = "Aluminium"
+scene = ExtResource("2_5d7o6")
+icon = ExtResource("1_rp2wj")

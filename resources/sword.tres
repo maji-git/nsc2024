@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://w7aosmlpmusk"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://w7aosmlpmusk"]
 
 [ext_resource type="Script" path="res://resources/item.gd" id="1_nykwd"]
 [ext_resource type="PackedScene" uid="uid://bvrxga3umnfl1" path="res://scenes/objects/sword.tscn" id="1_u78u0"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7inio"]
+
 [resource]
 script = ExtResource("1_nykwd")
-name = "Sword"
+name = "Copper"
 scene = ExtResource("1_u78u0")
+icon = SubResource("CompressedTexture2D_7inio")

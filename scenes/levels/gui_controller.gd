@@ -2,18 +2,19 @@ class_name GUIController
 extends CanvasLayer
 
 signal hp_lvl_up
+signal send_player_inst(player: Player)
 
 @export var inv_opened: bool = false
-@export var intial_lvl_max_xp: int
+var intial_lvl_max_xp: int = 0
 @export var player_instance: Player
 
 @onready var inventory_panel = %InventoryPanel
 @onready var xp_progress_bar: ProgressBar = %XPProgressBar
+@onready var item_grid: InventoryUI = %ItemGrid
 
 
 func _ready():
 	inventory_panel.visible = inv_opened
-	xp_progress_bar.max_value = intial_lvl_max_xp
 
 
 func _on_main_game_inventory_toggled():
@@ -25,7 +26,7 @@ func _on_add_xp_btn_pressed():
 	hp_lvl_up.emit()
 
 
-func _on_player_lvl_up(lvl: String, lvl_xp_need: String):	
+func _on_player_lvl_up(lvl: String, lvl_xp_need: String):
 	%LevelLabel.text = "LVL: %s" % lvl
 	
 	if lvl == "MAX" and lvl_xp_need == "MAX":
@@ -52,6 +53,9 @@ func _on_player_player_base_stats_init(player: Player):
 	%HPLabel.text = "HP: %s/%s" % [player.live_stats.HP, player.live_stats.HP]
 	%MPLabel.text = "MP: %s/%s" % [player.live_stats.MP, player.live_stats.MP]
 	
+	intial_lvl_max_xp = player.xp_data["1"].start
+	xp_progress_bar.max_value = intial_lvl_max_xp
+	%XPLabel.text = "XP: 0/%s" % intial_lvl_max_xp
 	var labels: Array[Label] = [%HPLabels, %MPLabels, %ATKLabel, %SPDLabel]
 	for i in range(labels.size()):
 		var idx := labels[i].name.split("L")[0]
@@ -99,3 +103,7 @@ func _on_spd_upgrade_button_pressed():
 func _on_player_live_stats_changed():
 	%HPLabel.text = "HP: %s/%s" % [player_instance.live_stats.HP, player_instance.live_stats.HP]
 	%MPLabel.text = "MP: %s/%s" % [player_instance.live_stats.MP, player_instance.live_stats.MP]
+
+
+func _on_ground_item_item_picked_up(itm: Item):
+	item_grid.add(itm)

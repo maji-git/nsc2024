@@ -1,18 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnvrpqgoxo41k"]
+[gd_scene load_steps=6 format=3 uid="uid://bnvrpqgoxo41k"]
 
 [ext_resource type="Script" path="res://scenes/levels/gui_controller.gd" id="1_2uar2"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hjhwe"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_krypj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k0bt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47qn6"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4vti"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1agti"]
+[ext_resource type="PackedScene" uid="uid://b1p0urj2r281" path="res://ui/inventory.tscn" id="2_j4a2o"]
+[ext_resource type="Script" path="res://scenes/levels/pickup_prompt.gd" id="3_w73o7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iy3vb"]
 
@@ -513,375 +503,10 @@ size_flags_horizontal = 4
 text = "Items"
 horizontal_alignment = 1
 
-[node name="ItemGrid" type="GridContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer"]
+[node name="ItemGrid" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer" instance=ExtResource("2_j4a2o")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-columns = 4
-
-[node name="CenterContainer" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_krypj")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_4k0bt")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_47qn6")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_i4vti")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1agti")
-
-[node name="CenterContainer2" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer2"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer2/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer3" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer3"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer3/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer4" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer4"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer4/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer5" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer5"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer5/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer6" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer6"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer6/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer7" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer7"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer7/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer8" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer8"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer8/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer9" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer9"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer9/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer10" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer10"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer10/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer11" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer11"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer11/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer12" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer12"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer12/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer13" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer13"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer13/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer14" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer14"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer14/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer15" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer15"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer15/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
-
-[node name="CenterContainer16" type="CenterContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer16"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_hjhwe")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer16/TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_right = -3.0
-offset_bottom = 18.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 13
-text = "99"
-horizontal_alignment = 1
+size_flags_horizontal = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="InventoryPanel/CenterContainer/Grid"]
 layout_mode = 2
@@ -1065,8 +690,27 @@ theme_override_font_sizes/font_size = 0
 text = "C"
 horizontal_alignment = 1
 
+[node name="PickupPromptsTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="PickupPrompts" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 22.0
+offset_right = -25.0
+offset_bottom = 45.0
+grow_horizontal = 0
+alignment = 1
+script = ExtResource("3_w73o7")
+
+[node name="Label" type="Label" parent="PickupPrompts"]
+layout_mode = 2
+text = "+1 Copper"
+
+[connection signal="send_player_inst" from="." to="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid" method="_on_main_gui_send_player_inst"]
 [connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/HPUpgrade/HPUpgradeButton" to="." method="_on_hp_upgrade_button_pressed"]
 [connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/MPUpgrade/MPUpgradeButton" to="." method="_on_mp_upgrade_button_pressed"]
 [connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/ATKUpgrade/ATKUpgradeButton" to="." method="_on_atk_upgrade_button_pressed"]
 [connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/SPDUpgrade/SPDUpgradeButton" to="." method="_on_spd_upgrade_button_pressed"]
-[connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid/CenterContainer/TextureRect/Button" to="." method="_on_add_xp_btn_pressed"]

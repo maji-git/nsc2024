@@ -1,5 +1,7 @@
 extends Node2D
 
+signal item_picked_up(itm: Item)
+
 @export var item: Item
 
 func _ready():
@@ -7,6 +9,5 @@ func _ready():
 	add_child(scene)
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("on_item_picked"):
-		body.on_item_picked(item)
-		queue_free()
+	queue_free()
+	item_picked_up.emit(item)

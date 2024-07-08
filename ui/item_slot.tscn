@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://clgwsrv7jho8d"]
+
+[ext_resource type="Script" path="res://ui/item_slot.gd" id="1_723q8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jd43l"]
+font_size = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sth7r"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 50.0
+offset_bottom = 49.94
+rotation = 0.00124634
+size_flags_horizontal = 3
+size_flags_vertical = 0
+script = ExtResource("1_723q8")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+label_settings = SubResource("LabelSettings_jd43l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sth7r")

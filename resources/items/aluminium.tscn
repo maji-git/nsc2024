@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfnmkecsuml3g"]
+
+[ext_resource type="Texture2D" uid="uid://dnbt3ngdfuw5j" path="res://assets/items/aluminium.png" id="1_4d58q"]
+
+[node name="aluminium" type="Node2D"]
+
+[node name="Aluminium" type="Sprite2D" parent="."]
+texture = ExtResource("1_4d58q")

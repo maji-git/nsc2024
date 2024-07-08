@@ -1,7 +1,9 @@
 class_name ItemsEnum
 
+enum ItemName { COPPER, LEAD, TITANIUM, ALUMINIUM }
+
 const Empty = [6, 9]
-	
+
 const DaggerI = [0, 0]
 const DaggerII = [1, 0]
 const DaggerIII = [2, 0]

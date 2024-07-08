@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://2b36kg4og0lp"]
+
+[ext_resource type="Texture2D" uid="uid://c8xabxd4d2xms" path="res://assets/items/titanium.png" id="1_1km13"]
+[ext_resource type="Script" path="res://resources/item.gd" id="2_3e65x"]
+[ext_resource type="PackedScene" uid="uid://jxnily0rjiq7" path="res://resources/items/titanium.tscn" id="2_ivx3x"]
+
+[resource]
+script = ExtResource("2_3e65x")
+name = "Titanium"
+scene = ExtResource("2_ivx3x")
+icon = ExtResource("1_1km13")

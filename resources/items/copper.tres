@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://ljt0adgpt0pd"]
+
+[ext_resource type="Texture2D" uid="uid://2lq0eha2gie" path="res://assets/items/copper.png" id="1_41ind"]
+[ext_resource type="PackedScene" uid="uid://di0aktgnsqlcu" path="res://resources/items/copper.tscn" id="2_1ohvk"]
+[ext_resource type="Script" path="res://resources/item.gd" id="3_dmbvn"]
+
+[resource]
+script = ExtResource("3_dmbvn")
+name = "Copper"
+scene = ExtResource("2_1ohvk")
+icon = ExtResource("1_41ind")

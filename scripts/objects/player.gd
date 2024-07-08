@@ -65,6 +65,14 @@ var stat_points := 0:
 		stat_points = val
 		stat_point_changed.emit(val)
 
+
+var inv = {
+	"copper": 0,
+	"lead": 0,
+	"titanium": 0,
+	"aluminium": 0
+}
+
 func get_xp_data():
 	var file = FileAccess.open(xp_data_path, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
@@ -83,9 +91,6 @@ func _ready():
 	xp_data = get_xp_data()
 	print(xp_data)
 
-
-func on_item_picked(item: Item):
-	print(item.name)
 
 
 func _on_player_class_selected(player_class: GlobalUtils.CharactorClass):
@@ -121,3 +126,6 @@ func _on_player_stat_changed():
 			"SPD":
 				speed = get_new_stats.call(50, 150, i)
 
+
+func _on_ground_item_item_picked_up(itm: Item):
+	pass # Replace with function body.
