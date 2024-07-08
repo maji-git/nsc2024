@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_7qm57"]
 [ext_resource type="Texture2D" uid="uid://cyq4d3is4crls" path="res://assets/title/title_backdrop.png" id="1_rl4nv"]
-[ext_resource type="PackedScene" uid="uid://vrx5838eikbs" path="res://scenes/levels/class_select.tscn" id="2_epr1k"]
+[ext_resource type="PackedScene" uid="uid://ddi2i2xbkbxxl" path="res://scenes/game.tscn" id="2_rx0sl"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_7qm57")
-next_scene = ExtResource("2_epr1k")
+next_scene = ExtResource("2_rx0sl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -27,6 +27,14 @@ grow_vertical = 2
 scale = Vector2(1.00402, 1.00324)
 size_flags_horizontal = 4
 texture = ExtResource("1_rl4nv")
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10748, 0.10748, 0.10748, 0.541176)
 
 [node name="VBOXContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -53,13 +61,23 @@ text = "Synced City"
 layout_mode = 2
 text = "Play"
 
-[node name="OptionButton" type="Button" parent="CanvasLayer/VBOXContainer"]
-layout_mode = 2
-text = "Option"
-
 [node name="QuitButton" type="Button" parent="CanvasLayer/VBOXContainer"]
 layout_mode = 2
 text = "Quit
 "
 
+[node name="Confirm" type="Label" parent="CanvasLayer/VBOXContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.945098, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Press again to confim qutting"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+
 [connection signal="pressed" from="CanvasLayer/VBOXContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBOXContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
