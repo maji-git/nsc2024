@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_0te2u")
+name = "Warrior"
 HP = 2
 MP = 1
 ATK = 1

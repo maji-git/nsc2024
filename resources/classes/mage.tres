@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_0je8o")
+name = "Mage"
 HP = 1
 MP = 2
 ATK = 1

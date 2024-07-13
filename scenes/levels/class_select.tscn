@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://vrx5838eikbs"]
+[gd_scene load_steps=13 format=3 uid="uid://vrx5838eikbs"]
 
 [ext_resource type="Script" path="res://scenes/levels/class_select.gd" id="1_wjonh"]
 [ext_resource type="PackedScene" uid="uid://dberq6pqe725j" path="res://scenes/levels/main_game.tscn" id="2_35pt4"]
+[ext_resource type="PackedScene" uid="uid://dfx6jxvkme0y6" path="res://class_selector.tscn" id="3_krsd0"]
+[ext_resource type="Texture2D" uid="uid://dw3hmadep1os3" path="res://assets/icons/sword.png" id="3_wxiup"]
+[ext_resource type="Texture2D" uid="uid://caskqgtyk7old" path="res://assets/icons/gun.png" id="4_8b3p1"]
+[ext_resource type="Resource" uid="uid://t4bdfjx2f1jj" path="res://resources/classes/warrior.tres" id="4_cafvv"]
+[ext_resource type="Texture2D" uid="uid://c6myj16hu8smh" path="res://assets/icons/mage.png" id="5_ri68x"]
+[ext_resource type="Resource" uid="uid://diqqcn4mxitsg" path="res://resources/classes/mage.tres" id="6_uc14o"]
+[ext_resource type="Texture2D" uid="uid://dgthxo08xsfuh" path="res://assets/icons/dagger.png" id="6_y7boe"]
+[ext_resource type="Resource" uid="uid://pgn0njtk1agd" path="res://resources/classes/sharpshooter.tres" id="8_mewut"]
+[ext_resource type="Resource" uid="uid://di4kq6c3xqvgi" path="res://resources/classes/theif.tres" id="10_3hkij"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xoqju"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yeelm"]
-size = Vector2(300, 500)
 
 [node name="ClassSelect" type="Control"]
 layout_mode = 3
@@ -18,7 +24,7 @@ grow_vertical = 2
 script = ExtResource("1_wjonh")
 main_scene = ExtResource("2_35pt4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,233 +32,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 100
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Select Your Class"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 30
 columns = 4
 
-[node name="WarriorSelector" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+[node name="WarriorSelector" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("3_krsd0")]
 unique_name_in_owner = true
 layout_mode = 2
-alignment = 1
+player_class = ExtResource("4_cafvv")
+class_icon = ExtResource("3_wxiup")
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Warrior"
-horizontal_alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/GridContainer/WarriorSelector"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
-
-[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Stats:"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
-layout_mode = 2
-text = "HP: 2/5"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
-layout_mode = 2
-text = "ATK: 2/5"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="VBoxContainer/GridContainer/WarriorSelector"]
-layout_mode = 2
-text = "SPD: 2/5"
-horizontal_alignment = 1
-
-[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/GridContainer/WarriorSelector"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/WarriorSelector"]
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_yeelm")
-
-[node name="SelectWarrior" type="Button" parent="VBoxContainer/GridContainer/WarriorSelector"]
+[node name="MageSelector" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("3_krsd0")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Select"
+player_class = ExtResource("6_uc14o")
+class_icon = ExtResource("5_ri68x")
 
-[node name="SharpshooterSelector" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+[node name="SharpshooterSelector" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("3_krsd0")]
 unique_name_in_owner = true
 layout_mode = 2
-alignment = 1
+player_class = ExtResource("8_mewut")
+class_icon = ExtResource("4_8b3p1")
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Sharpshooter"
-horizontal_alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
-
-[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Stats:"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
-layout_mode = 2
-text = "HP: 2/5"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
-layout_mode = 2
-text = "ATK: 2/5"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
-layout_mode = 2
-text = "SPD: 2/5"
-horizontal_alignment = 1
-
-[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_yeelm")
-
-[node name="SelectSharpshooter" type="Button" parent="VBoxContainer/GridContainer/SharpshooterSelector"]
+[node name="ThiefSelector" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("3_krsd0")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Select"
+player_class = ExtResource("10_3hkij")
+class_icon = ExtResource("6_y7boe")
 
-[node name="MageSelector" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Mage"
-horizontal_alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/GridContainer/MageSelector"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
-
-[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Stats:"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
-layout_mode = 2
-text = "HP: 2/5"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
-layout_mode = 2
-text = "ATK: 2/5"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="VBoxContainer/GridContainer/MageSelector"]
-layout_mode = 2
-text = "SPD: 2/5"
-horizontal_alignment = 1
-
-[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/GridContainer/MageSelector"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/MageSelector"]
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_yeelm")
-
-[node name="SelectMage" type="Button" parent="VBoxContainer/GridContainer/MageSelector"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Select"
-
-[node name="TheifSelector" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Theif"
-horizontal_alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/GridContainer/TheifSelector"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
-
-[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Stats:"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
-layout_mode = 2
-text = "HP: 2/5"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
-layout_mode = 2
-text = "ATK: 2/5"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="VBoxContainer/GridContainer/TheifSelector"]
-layout_mode = 2
-text = "SPD: 2/5"
-horizontal_alignment = 1
-
-[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/GridContainer/TheifSelector"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/TheifSelector"]
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_yeelm")
-
-[node name="SelectThief" type="Button" parent="VBoxContainer/GridContainer/TheifSelector"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Select"
-
-[connection signal="pressed" from="VBoxContainer/GridContainer/WarriorSelector/SelectWarrior" to="." method="_on_warrior_selected"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/SharpshooterSelector/SelectSharpshooter" to="." method="_on_select_sharpshooter_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/MageSelector/SelectMage" to="." method="_on_select_mage_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/TheifSelector/SelectThief" to="." method="_on_select_thief_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/WarriorSelector" to="." method="_on_warrior_selected"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/MageSelector" to="." method="_on_select_mage_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/SharpshooterSelector" to="." method="_on_select_sharpshooter_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/ThiefSelector" to="." method="_on_select_thief_pressed"]

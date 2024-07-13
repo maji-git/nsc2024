@@ -4,7 +4,7 @@ class_name PlayerWalkState
 @export var player: Player
 
 func enter():
-	print('player started walking!')
+	pass
 
 
 func physics_process(_delta):
@@ -29,5 +29,5 @@ func physics_process(_delta):
 	
 	
 	if player.velocity == Vector2.ZERO:
-		Transitioned.emit(self, "idle")
+		change_state.emit(self, "idle")
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dberq6pqe725j"]
+[gd_scene load_steps=15 format=3 uid="uid://dberq6pqe725j"]
 
 [ext_resource type="Texture2D" uid="uid://c2hv7vo7kn1ya" path="res://assets/Texture/TX Tileset Stone Ground.png" id="1_p8ryk"]
 [ext_resource type="Script" path="res://scenes/levels/main_game_controller.gd" id="1_pwafn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cfawdqis7kof7" path="res://scenes/objects/player.tscn" id="4_yiwd7"]
 [ext_resource type="PackedScene" uid="uid://clh08wapgxic4" path="res://scenes/objects/ground_item.tscn" id="6_pr7ii"]
 [ext_resource type="Resource" uid="uid://ljt0adgpt0pd" path="res://resources/items/copper.tres" id="7_oo83f"]
+[ext_resource type="PackedScene" uid="uid://bx6xfbfunhwtn" path="res://slime_moster.tscn" id="9_w35mv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpdts"]
 texture = ExtResource("1_p8ryk")
@@ -685,15 +686,21 @@ layer_1/name = "Walls"
 layer_1/tile_data = PackedInt32Array(-262148, 65538, 6, -196612, 65538, 7, -262147, 131074, 6, -196611, 131074, 7, -262146, 196610, 6, -196610, 196610, 7, -262145, 262146, 6, -196609, 262146, 7, -327680, 65538, 6, -262144, 65538, 7, -327679, 131074, 6, -262143, 131074, 7, -327678, 196610, 6, -262142, 196610, 7, -327677, 262146, 6, -262141, 262146, 7, -327676, 65538, 6, -262140, 65538, 7, -327675, 131074, 6, -262139, 131074, 7, -327674, 196610, 6, -262138, 196610, 7, -327673, 262146, 6, -262137, 262146, 7)
 
 [node name="GroundItem" parent="." instance=ExtResource("6_pr7ii")]
+position = Vector2(-153, 76)
 item = ExtResource("7_oo83f")
-
-[node name="Player" parent="." instance=ExtResource("4_yiwd7")]
-scale = Vector2(4, 4)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_msf1a")
+
+[node name="Monster" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_w35mv")]
+position = Vector2(1178, 91)
+player = NodePath("../Player")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("4_yiwd7")]
+scale = Vector2(4, 4)
+MAX_LVL = 40
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [connection signal="inventory_toggled" from="." to="MainGUI" method="_on_main_game_inventory_toggled"]
 [connection signal="hp_lvl_up" from="MainGUI" to="Player" method="_on_main_gui_hp_lvl_up"]
@@ -704,6 +711,7 @@ sprite_frames = SubResource("SpriteFrames_msf1a")
 [connection signal="player_base_stats_init" from="Player" to="MainGUI" method="_on_player_player_base_stats_init"]
 [connection signal="player_class_selected" from="Player" to="MainGUI" method="_on_player_player_class_selected"]
 [connection signal="player_class_selected" from="Player" to="Player" method="_on_player_class_selected"]
+[connection signal="player_died" from="Player" to="MainGUI" method="_on_player_player_died"]
 [connection signal="player_stat_changed" from="Player" to="MainGUI" method="_on_player_player_stat_changed"]
 [connection signal="player_stat_changed" from="Player" to="Player" method="_on_player_stat_changed"]
 [connection signal="stat_point_changed" from="Player" to="MainGUI" method="_on_player_stat_point_changed"]

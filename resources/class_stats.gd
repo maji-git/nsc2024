@@ -3,6 +3,7 @@ extends Resource
 
 enum Points { ONE, TWO, THREE }
 
+@export var name := ''
 @export var HP: Points
 @export var MP: Points
 @export var ATK: Points

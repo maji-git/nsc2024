@@ -3,10 +3,9 @@
 [ext_resource type="Script" path="res://scenes/levels/pickup.gd" id="1_5t82s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_li37c"]
-size = Vector2(84, 88)
+size = Vector2(64, 64)
 
 [node name="SwordGroundItem" type="Node2D"]
-position = Vector2(100, 100)
 script = ExtResource("1_5t82s")
 
 [node name="Area2D" type="Area2D" parent="."]

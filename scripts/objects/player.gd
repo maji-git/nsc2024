@@ -9,10 +9,13 @@ signal player_class_selected(player_class: GlobalUtils.CharactorClass)
 signal player_base_stats_init(player: Player)
 signal stat_point_changed(stat_points: int)
 signal player_stat_changed
-signal live_stats_changed
+signal live_stats_changed(hp_diff: int, mp_diff: int)
+signal player_died
+signal no_mp
 
 var speed := 0
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
+@export var MAX_LVL := 3
 
 var dir := Vector2.ZERO
 var last_dir := Vector2.ZERO
@@ -21,13 +24,11 @@ var player_class: GlobalUtils.CharactorClass
 var base_stats := {}
 var initial_stats := {}
 var stats_multiplier := {}
-var stats := {}:
-	set(val):
-		stats = val
-		print(val)
+var stats := {}
 var live_stats := { "HP": 0, "MP": 0 }
+var intial_live_stats := { "HP": 0, "MP": 0 }
 const xp_data_path := "res://scripts/objects/xp_data.json"
-const MAX_LVL := 3
+
 var xp_data = {}
 var lvl := 1:
 	set(val):
@@ -87,6 +88,10 @@ func _on_main_gui_hp_lvl_up():
 	curr_xp += 100
 
 
+func _input(event):
+	if event.is_action_pressed("secondary attack"):
+		curr_xp += 100
+
 func _ready():
 	xp_data = get_xp_data()
 	print(xp_data)
@@ -115,6 +120,7 @@ func _on_player_stat_changed():
 		var initial = initial_stats[i]
 		var real = stats[i]
 		var mul = stats_multiplier[i]
+		print("%s:\nintial stat: %s, real_stat: %s, multiplier: %s" % [i, initial, real, mul])
 		return (intial_stats_adder + (initial * intial_stats_multiplier)) + ((real - initial) * mul)
 	print("stats keys:",stats.keys())
 	for i in stats.keys():
@@ -122,10 +128,24 @@ func _on_player_stat_changed():
 		match i:
 			"HP", "MP":
 				live_stats[i] = get_new_stats.call(50, 0, i)
-				live_stats_changed.emit()
+				live_stats_changed.emit(0, 0)
+				stats
 			"SPD":
 				speed = get_new_stats.call(50, 150, i)
 
 
 func _on_ground_item_item_picked_up(itm: Item):
-	pass # Replace with function body.
+	pass # TODO
+
+
+func _on_live_stats_changed(_hp_diff: int, _mp_diff: int):
+	print(live_stats)
+	if live_stats.HP <= 0:
+		player_died.emit()
+	
+	if live_stats.MP <= 0:
+		no_mp.emit()
+
+
+func _on_player_died():
+	process_mode = Node.PROCESS_MODE_DISABLED

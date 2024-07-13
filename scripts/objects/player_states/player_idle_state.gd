@@ -5,8 +5,6 @@ class_name PlayerIdleState
 @onready var animated_sprite = %AnimatedSprite2D
 
 func enter():
-	print("player idle state!")
-	print(player.last_dir)
 	match player.last_dir:
 		Vector2.RIGHT:
 			animated_sprite.play("side_idle")
@@ -27,4 +25,4 @@ func enter():
 
 func physics_process(_delta):
 	if player.dir != Vector2.ZERO:
-		Transitioned.emit(self, "walk")
+		change_state.emit(self, "walk")

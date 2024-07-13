@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfx6jxvkme0y6"]
+
+[ext_resource type="Script" path="res://class_selector.gd" id="1_ynpt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xoqju"]
+
+[node name="ClassSelector" type="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_ynpt6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 9
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Warrior"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Stats:"
+horizontal_alignment = 1
+
+[node name="HP" type="Label" parent="."]
+layout_mode = 2
+text = "HP: 2/3"
+horizontal_alignment = 1
+
+[node name="MP" type="Label" parent="."]
+layout_mode = 2
+text = "MP: 2/3"
+horizontal_alignment = 1
+
+[node name="ATK" type="Label" parent="."]
+layout_mode = 2
+text = "ATK: 2/3"
+horizontal_alignment = 1
+
+[node name="SPD" type="Label" parent="."]
+layout_mode = 2
+text = "SPD: 2/3"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xoqju")
+
+[node name="SelectWarrior" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select"
+
+[connection signal="pressed" from="SelectWarrior" to="." method="_on_select_pressed"]

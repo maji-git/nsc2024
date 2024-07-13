@@ -8,10 +8,12 @@ signal send_player_inst(player: Player)
 var intial_lvl_max_xp: int = 0
 @export var player_instance: Player
 
-@onready var inventory_panel = %InventoryPanel
 @onready var xp_progress_bar: ProgressBar = %XPProgressBar
 @onready var item_grid: InventoryUI = %ItemGrid
-
+@onready var inventory_panel := %InventoryPanel
+@onready var points_panel := %PointsPanel
+@onready var abilities_panel := %AbilitiesPanel
+@onready var death_overlay := %DeathOverlay
 
 func _ready():
 	inventory_panel.visible = inv_opened
@@ -50,10 +52,10 @@ func _on_player_player_class_selected(player_class):
 
 
 func _on_player_player_base_stats_init(player: Player):
-	%HPLabel.text = "HP: %s/%s" % [player.live_stats.HP, player.live_stats.HP]
-	%MPLabel.text = "MP: %s/%s" % [player.live_stats.MP, player.live_stats.MP]
+	%HPLabel.text = "HP: %d/%d" % [player.live_stats.HP, player.live_stats.HP]
+	%MPLabel.text = "MP: %d/%d" % [player.live_stats.MP, player.live_stats.HP]
 	
-	intial_lvl_max_xp = player.xp_data["1"].start
+	intial_lvl_max_xp = player.xp_data["1"].need
 	xp_progress_bar.max_value = intial_lvl_max_xp
 	%XPLabel.text = "XP: 0/%s" % intial_lvl_max_xp
 	var labels: Array[Label] = [%HPLabels, %MPLabels, %ATKLabel, %SPDLabel]
@@ -100,10 +102,22 @@ func _on_spd_upgrade_button_pressed():
 	set_player_stat_points("SPD")
 
 
-func _on_player_live_stats_changed():
-	%HPLabel.text = "HP: %s/%s" % [player_instance.live_stats.HP, player_instance.live_stats.HP]
-	%MPLabel.text = "MP: %s/%s" % [player_instance.live_stats.MP, player_instance.live_stats.MP]
+func _on_player_live_stats_changed(hp_diff: int, mp_diff: int = 0):
+	%HPLabel.text = "HP: %d/%d" % [player_instance.live_stats.HP, player_instance.live_stats.HP + hp_diff]
+	%MPLabel.text = "MP: %d/%d" % [player_instance.live_stats.MP, player_instance.live_stats.MP + mp_diff]
 
 
 func _on_ground_item_item_picked_up(itm: Item):
 	item_grid.add(itm)
+	#pickup_prompts.add_prompt(itm)
+
+
+func _on_player_player_died():
+	points_panel.visible = false
+	abilities_panel.visible = false
+	inventory_panel.visible = false
+	death_overlay.visible = true
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/levels/title_screen.tscn")
