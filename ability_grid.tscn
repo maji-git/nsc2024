@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://djwe7if6a76ln"]
+
+[ext_resource type="Texture2D" uid="uid://bwq1oqtfy3lkn" path="res://assets/abilities/researcher/1.PNG" id="1_86k80"]
+[ext_resource type="Script" path="res://ability_grid.gd" id="2_gcvj6"]
+
+[node name="Ability1" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+texture = ExtResource("1_86k80")
+script = ExtResource("2_gcvj6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -12.0
+offset_right = -2.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 0
+text = "1"

@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgwk7brygm3v2"]
+
+[ext_resource type="Script" path="res://scenes/objects/thief_eapon_slot.gd" id="1_1rykq"]
+[ext_resource type="Texture2D" uid="uid://dgthxo08xsfuh" path="res://assets/icons/dagger.png" id="2_40lue"]
+
+[sub_resource type="Animation" id="Animation_neqev"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_smegv"]
+resource_name = "sweep"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.14159, 3.44366, 3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dmd5q"]
+_data = {
+"RESET": SubResource("Animation_neqev"),
+"sweep": SubResource("Animation_smegv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mhb0"]
+size = Vector2(18, 12)
+
+[node name="ThiefWeaponSlot" type="Node2D"]
+script = ExtResource("1_1rykq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(23, 0)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_40lue")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dmd5q")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(23, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_6mhb0")
+debug_color = Color(0.975083, 0, 0.42204, 0.42)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

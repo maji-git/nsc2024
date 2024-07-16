@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="ClassStats" load_steps=2 format=3 uid="uid://di4kq6c3xqvgi"]
+[gd_resource type="Resource" script_class="ClassStats" load_steps=3 format=3 uid="uid://di4kq6c3xqvgi"]
 
 [ext_resource type="Script" path="res://resources/class_stats.gd" id="1_ok4me"]
+[ext_resource type="PackedScene" uid="uid://cgwk7brygm3v2" path="res://thief_weapon_slot.tscn" id="2_7oi47"]
 
 [resource]
 script = ExtResource("1_ok4me")
-name = "Theif"
+name = "Thief"
+weapon = ExtResource("2_7oi47")
 HP = 0
 MP = 1
-ATK = 2
+ATK = 1
 SPD = 2
 MULTIPLIER = {
 "ATK": 2,

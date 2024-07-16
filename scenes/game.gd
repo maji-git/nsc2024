@@ -21,4 +21,3 @@ func _on_class_select_class_selected(class_type: GlobalUtils.CharactorClass):
 	class_select.process_mode = Node.PROCESS_MODE_DISABLED
 	game_started.emit(class_type)
 
-	

@@ -7,6 +7,8 @@ var hp = 50:
 	set(val):
 		hp = val
 		$ProgressBar.value = val
+		if val <= 0:
+			queue_free()
 
 func _physics_process(delta):
 	move_and_slide()
@@ -41,7 +43,5 @@ func _on_attack_range_body_exited(body):
 
 
 func _on_attack_attacked(dmg: int):
-	print("%d - 5 = %d" % [player.live_stats.HP, player.live_stats.HP-5])
 	player.live_stats.HP -= dmg
 	player.live_stats_changed.emit(5, 0)
-	print("done: ", player.live_stats.HP)

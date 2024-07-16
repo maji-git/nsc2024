@@ -17,7 +17,7 @@ func _input(event):
 
 
 func _on_game_game_started(player_class: GlobalUtils.CharactorClass):
-	print("Player Class: %d" %player_class)
+	print("Player Class: %s" % GlobalUtils.new().get_player_classnames(player_class))
+	player.player_class = player_class
 	player.player_class_selected.emit(player_class)
 	main_gui.visible = true
-	player.player_class = player_class

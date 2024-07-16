@@ -3,7 +3,7 @@ class_name GlobalUtils
 enum CharactorClass { WARRIOR, SHARPSHOOTER, MAGE, THEIF }
 const WARRIOR_DISPLAY_NAME := "Warrior"
 const SHARPSHOOTER_DISPLAY_NAME := "Sharpshooter"
-const MAGE_DISPLAY_NAME := "Mage"
+const MAGE_DISPLAY_NAME := "Researcher"
 const THEIF_DISPLAY_NAME := "Theif"
 
 func get_player_classnames(player_class: CharactorClass) -> String:

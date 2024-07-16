@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cch4jnr5j0y8u"]
+
+[ext_resource type="Script" path="res://scenes/objects/weapon_slot.gd" id="1_km2w1"]
+[ext_resource type="Script" path="res://scenes/objects/mage_weapon_slot.gd" id="1_wilwd"]
+[ext_resource type="PackedScene" uid="uid://dcaervem3larx" path="res://scenes/objects/research_book.tscn" id="2_85xym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xx2ji"]
+radius = 52.469
+
+[node name="MageWeaponSlot" type="Node2D"]
+position = Vector2(18, 0)
+script = ExtResource("1_wilwd")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_xx2ji")
+debug_color = Color(0.576079, 0.518849, 0.533761, 0.42)
+
+[node name="WeaponSlot" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_km2w1")
+
+[node name="ResearchBook" parent="WeaponSlot" instance=ExtResource("2_85xym")]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

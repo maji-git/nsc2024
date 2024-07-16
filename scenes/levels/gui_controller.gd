@@ -52,8 +52,10 @@ func _on_player_player_class_selected(player_class):
 
 
 func _on_player_player_base_stats_init(player: Player):
-	%HPLabel.text = "HP: %d/%d" % [player.live_stats.HP, player.live_stats.HP]
-	%MPLabel.text = "MP: %d/%d" % [player.live_stats.MP, player.live_stats.HP]
+	%HPLabel.text = "HP: %d" % [player.live_stats.HP]
+	%MPLabel.text = "MP: %d" % [player.live_stats.MP]
+	update_abilities(GlobalUtils.new().get_player_classnames(player.player_class))
+	print("asdass", player.player_class)
 	
 	intial_lvl_max_xp = player.xp_data["1"].need
 	xp_progress_bar.max_value = intial_lvl_max_xp
@@ -103,8 +105,8 @@ func _on_spd_upgrade_button_pressed():
 
 
 func _on_player_live_stats_changed(hp_diff: int, mp_diff: int = 0):
-	%HPLabel.text = "HP: %d/%d" % [player_instance.live_stats.HP, player_instance.live_stats.HP + hp_diff]
-	%MPLabel.text = "MP: %d/%d" % [player_instance.live_stats.MP, player_instance.live_stats.MP + mp_diff]
+	%HPLabel.text = "HP: %d" % [player_instance.live_stats.HP]
+	%MPLabel.text = "MP: %d" % [player_instance.live_stats.MP]
 
 
 func _on_ground_item_item_picked_up(itm: Item):
@@ -121,3 +123,36 @@ func _on_player_player_died():
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/levels/title_screen.tscn")
+	
+
+func update_abilities(classname: String):
+	var a = DirAccess.get_files_at("res://assets/abilities/%s" % classname.to_lower())
+	var b: Array[String] = []
+	for i in range(a.size()):
+		if i % 2 != 0:
+			b.append(a[i].split(".import")[0])
+			print(a[i].split(".import")[0])
+	
+	b.sort()
+	for i in range(b.size()):
+		var bar = preload("res://ability_pod.tscn")
+		var barr := bar.instantiate() as AbilityPod
+		barr.texture = load("res://assets/abilities/%s/%s" % [classname.to_lower(), b[i]])
+		print("adding: %s" % b[i])
+		barr.hotkey = b[i].split(".")[0]
+		
+		var arr = preload("res://ability_grid.tscn")
+		var arrr := arr.instantiate() as AbilityGrid
+		arrr.txt = b[i].split(".")[0]
+		arrr.txture = load("res://assets/abilities/%s/%s" % [classname.to_lower(), b[i]])
+		
+		$InventoryPanel/CenterContainer/Grid/VBoxContainer2/AbilitiesRow1.add_child(arrr)
+		$AbilitiesPanel/CenterContainer/GridContainer.add_child(barr)
+	
+	var bar = preload("res://ability_pod.tscn")
+	var barr := bar.instantiate() as AbilityPod
+	barr.texture = load("res://assets/backpack.png")
+	print("adding: backpack")
+	barr.hotkey = "E"
+	$AbilitiesPanel/CenterContainer/GridContainer.add_child(barr)
+	

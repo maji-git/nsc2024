@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkrj5fbk10pvf"]
+
+[ext_resource type="Script" path="res://mage_attack_particle.gd" id="1_gkjcv"]
+
+[sub_resource type="Curve" id="Curve_xeuqe"]
+_data = [Vector2(0, 0.990313), 0.0, 0.0, 0, 0, Vector2(1, 0.310467), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45rj2"]
+size = Vector2(5, 11.7277)
+
+[node name="MageAttackParticle" type="Area2D"]
+monitorable = false
+script = ExtResource("1_gkjcv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 1000
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2(-20, 20)
+radial_accel_min = -20.0
+radial_accel_max = 5.85
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_xeuqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 3)
+rotation = 0.786083
+shape = SubResource("RectangleShape2D_45rj2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1mh2svxylje5"]
+
+[ext_resource type="Script" path="res://scenes/objects/Circle2D.gd" id="1_b7upt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tohyx"]
+radius = 40.0
+
+[node name="MageSkill1" type="Node2D"]
+script = ExtResource("1_b7upt")
+color = Color(1, 0.14902, 0.486275, 0.443137)
+radius = 40.0
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tohyx")
+debug_color = Color(0.974398, 0, 0.427065, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://caskqgtyk7old" path="res://assets/icons/gun.png" id="4_8b3p1"]
 [ext_resource type="Resource" uid="uid://t4bdfjx2f1jj" path="res://resources/classes/warrior.tres" id="4_cafvv"]
 [ext_resource type="Texture2D" uid="uid://c6myj16hu8smh" path="res://assets/icons/mage.png" id="5_ri68x"]
-[ext_resource type="Resource" uid="uid://diqqcn4mxitsg" path="res://resources/classes/mage.tres" id="6_uc14o"]
+[ext_resource type="Resource" uid="uid://diqqcn4mxitsg" path="res://resources/classes/researcher.tres" id="6_1ywgh"]
 [ext_resource type="Texture2D" uid="uid://dgthxo08xsfuh" path="res://assets/icons/dagger.png" id="6_y7boe"]
 [ext_resource type="Resource" uid="uid://pgn0njtk1agd" path="res://resources/classes/sharpshooter.tres" id="8_mewut"]
 [ext_resource type="Resource" uid="uid://di4kq6c3xqvgi" path="res://resources/classes/theif.tres" id="10_3hkij"]
@@ -61,7 +61,7 @@ class_icon = ExtResource("3_wxiup")
 [node name="MageSelector" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("3_krsd0")]
 unique_name_in_owner = true
 layout_mode = 2
-player_class = ExtResource("6_uc14o")
+player_class = ExtResource("6_1ywgh")
 class_icon = ExtResource("5_ri68x")
 
 [node name="SharpshooterSelector" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("3_krsd0")]

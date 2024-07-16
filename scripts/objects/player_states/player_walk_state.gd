@@ -13,11 +13,11 @@ func physics_process(_delta):
 		Vector2.RIGHT:
 			player.animated_sprite.play("side_walk")
 			player.last_dir = player.dir
-			player.animated_sprite.flip_h = false
+			player.animated_sprite.flip_h = true
 		Vector2.LEFT:
 			player.animated_sprite.play("side_walk")
 			player.last_dir = player.dir
-			player.animated_sprite.flip_h = true
+			player.animated_sprite.flip_h = false
 		Vector2.UP:
 			player.animated_sprite.play("back_walk")
 			player.last_dir = player.dir

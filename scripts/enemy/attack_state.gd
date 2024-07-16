@@ -16,10 +16,9 @@ func physics_process(_delta):
 		return
 	
 	attack_cooldown.start()
-	attacked.emit(5)
+	attacked.emit(0)
 	is_on_cd = true
 
 
 func _on_attack_cooldown_timeout():
-	print('atk cd timeout')
 	is_on_cd = false

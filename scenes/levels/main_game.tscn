@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dberq6pqe725j"]
+[gd_scene load_steps=18 format=3 uid="uid://dberq6pqe725j"]
 
 [ext_resource type="Texture2D" uid="uid://c2hv7vo7kn1ya" path="res://assets/Texture/TX Tileset Stone Ground.png" id="1_p8ryk"]
 [ext_resource type="Script" path="res://scenes/levels/main_game_controller.gd" id="1_pwafn"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://clh08wapgxic4" path="res://scenes/objects/ground_item.tscn" id="6_pr7ii"]
 [ext_resource type="Resource" uid="uid://ljt0adgpt0pd" path="res://resources/items/copper.tres" id="7_oo83f"]
 [ext_resource type="PackedScene" uid="uid://bx6xfbfunhwtn" path="res://slime_moster.tscn" id="9_w35mv"]
+[ext_resource type="Texture2D" uid="uid://cjh7ktei4jeiu" path="res://assets/32rogues/animals.png" id="10_kr4hx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpdts"]
 texture = ExtResource("1_p8ryk")
@@ -667,6 +668,13 @@ sources/2 = SubResource("TileSetAtlasSource_1qv4q")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_msf1a"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgeix"]
+radius = 36.0139
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgshu"]
+atlas = ExtResource("10_kr4hx")
+region = Rect2(0, 0, 32, 32)
+
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_pwafn")
 
@@ -696,11 +704,39 @@ sprite_frames = SubResource("SpriteFrames_msf1a")
 position = Vector2(1178, 91)
 player = NodePath("../Player")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(245, -74)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_sgeix")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_xgshu")
+
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("4_yiwd7")]
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 MAX_LVL = 40
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(309, 154)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_sgeix")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_xgshu")
+
+[node name="Monster2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_w35mv")]
+position = Vector2(-177, -957)
+player = NodePath("../Player")
+
+[node name="Monster3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_w35mv")]
+position = Vector2(-456, 335)
+player = NodePath("../Player")
 
 [connection signal="inventory_toggled" from="." to="MainGUI" method="_on_main_game_inventory_toggled"]
 [connection signal="hp_lvl_up" from="MainGUI" to="Player" method="_on_main_gui_hp_lvl_up"]

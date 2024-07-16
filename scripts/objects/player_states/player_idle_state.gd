@@ -8,10 +8,10 @@ func enter():
 	match player.last_dir:
 		Vector2.RIGHT:
 			animated_sprite.play("side_idle")
-			animated_sprite.flip_h = false
+			animated_sprite.flip_h = true
 		Vector2.LEFT:
 			animated_sprite.play("side_idle")
-			animated_sprite.flip_h = true
+			animated_sprite.flip_h = false
 		Vector2.UP:
 			animated_sprite.play("back_idle")
 			animated_sprite.flip_h = false

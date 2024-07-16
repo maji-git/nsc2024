@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="ClassStats" load_steps=2 format=3 uid="uid://pgn0njtk1agd"]
+[gd_resource type="Resource" script_class="ClassStats" load_steps=3 format=3 uid="uid://pgn0njtk1agd"]
 
 [ext_resource type="Script" path="res://resources/class_stats.gd" id="1_xwj5p"]
+[ext_resource type="PackedScene" uid="uid://brtuy5ntgvb6a" path="res://gun.tscn" id="2_2fygk"]
 
 [resource]
 script = ExtResource("1_xwj5p")
 name = "Sharpshooter"
+weapon = ExtResource("2_2fygk")
 HP = 0
 MP = 1
-ATK = 1
-SPD = 2
+ATK = 2
+SPD = 1
 MULTIPLIER = {
 "ATK": 2,
 "HP": 2,
