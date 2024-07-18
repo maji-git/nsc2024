@@ -1,10 +1,13 @@
-class_name ArcaneRoom
+class_name MonsterArcaneRoom
 extends Node2D
 
-var passages: Array[bool]
-var has_exit: bool
-var objects: Array[Dictionary]
-var exit: int
+signal spawn_monsters
+signal exit
+
+@onready var player_spawn_point = $PlayerSpawnPoint
+@onready var room_1: Node2D = $Room1
+@onready var room_2: Node2D = $Room2
+@export var player: Player
 
 #func _init(exitable: bool, exit_id: int = 0):
 	#if has_exit:
@@ -19,4 +22,17 @@ var exit: int
 		#
 	#print(passages)
 	#objects = [{}, {}]
-		
+
+
+func _ready():
+	print('arcane room: ', player)
+	for i in room_1.get_children():
+		i.player = player
+		print('enemy room 1: ', i.player)
+	
+	for i in room_2.get_children():
+		i.player = player
+		print('enemy room 2: ', i.player)
+
+func _on_area_2d_2_body_entered(body):
+	player.global_position = Vector2(0, 0)

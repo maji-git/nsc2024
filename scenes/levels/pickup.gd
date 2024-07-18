@@ -1,4 +1,5 @@
 extends Node2D
+class_name GroundItem
 
 signal item_picked_up(itm: Item)
 

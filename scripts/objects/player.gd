@@ -15,7 +15,9 @@ signal clicked
 var speed := 0
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
+@onready var heal_particle: CPUParticles2D = %HealParticle
 @export var MAX_LVL := 3
+@export var main_gui_ref: GUIController
 
 enum Skill {ONE, TWO, THREE, C, X, Z}
 var dir := Vector2.ZERO
@@ -26,10 +28,12 @@ var base_stats := {}
 var initial_stats := {}
 var stats_multiplier := {}
 var stats := {}
+var max_hp_mp := { "HP": 0, "MP": 0 }
 var live_stats := { "HP": 0, "MP": 0 }
 var intial_live_stats := { "HP": 0, "MP": 0 }
 const xp_data_path := "res://scripts/objects/xp_data.json"
 var curr_skill: Skill
+var game_ended = false
 
 var xp_data = {}
 var lvl := 1:
@@ -91,17 +95,30 @@ func _on_main_gui_hp_lvl_up():
 
 
 func _input(event):
-	if event.is_action_pressed("skill 1"):
-		print('casting')
-		match player_class:
-			GlobalUtils.CharactorClass.WARRIOR:
-				skill_warrior(Skill.ONE)
-			GlobalUtils.CharactorClass.SHARPSHOOTER:
-				skill_sharpshooter(Skill.ONE)
-			GlobalUtils.CharactorClass.MAGE:
-				skill_mage(Skill.ONE)
-			GlobalUtils.CharactorClass.THEIF:
-				skill_thief(Skill.ONE)
+	#if event.is_action_pressed("skill 1"):
+		#if !casting_skill:
+			#print('casting')
+			#casting_skill = true
+			#match player_class:
+				#GlobalUtils.CharactorClass.WARRIOR:
+					#skill_warrior(Skill.ONE)
+				#GlobalUtils.CharactorClass.SHARPSHOOTER:
+					#skill_sharpshooter(Skill.ONE)
+				#GlobalUtils.CharactorClass.MAGE:
+					#skill_mage(Skill.ONE)
+				#GlobalUtils.CharactorClass.THEIF:
+					#skill_thief(Skill.ONE)
+	if event.is_action_pressed("skill 5"):
+		print("healed to: ", max_hp_mp["HP"])
+		live_stats['HP'] = max_hp_mp["HP"] # X
+		heal_particle.color = Color("#aaf416")
+		heal_particle.emitting = true
+		live_stats_changed.emit(0, 0)
+	if event.is_action_pressed("skill 6"):
+		live_stats['MP'] = max_hp_mp["MP"] # C
+		heal_particle.color = Color("#7cb4ec")
+		heal_particle.emitting = true
+		live_stats_changed.emit(0, 0)
 
 
 func _ready():
@@ -112,12 +129,13 @@ func _ready():
 func _on_player_class_selected(player_class: GlobalUtils.CharactorClass):
 	var classname := GlobalUtils.new().get_player_classnames(player_class)
 	var stats_resource := load("res://resources/classes/%s.tres" % classname.to_lower()) as ClassStats 
-	var weapon := stats_resource.weapon.instantiate() as Weapon
+	var weapon := stats_resource.weapon.instantiate()
 	weapon.player = self
 	add_child(weapon)
 	stats_resource.set_base_stats(self)
 	stats = base_stats
 	live_stats = { "HP": base_stats.HP * 50, "MP": base_stats.MP * 50 }
+	max_hp_mp = { "HP": base_stats.HP * 50, "MP": base_stats.MP * 50 }
 	speed = 150 + (base_stats["SPD"] * 50)
 	print(initial_stats)
 	player_base_stats_init.emit(self)
@@ -126,7 +144,6 @@ func _on_player_class_selected(player_class: GlobalUtils.CharactorClass):
 
 func _physics_process(_delta):
 	dir = Input.get_vector("move left", "move right", "move up", "move down")
-		
 	move_and_slide()
 
 
@@ -144,7 +161,6 @@ func _on_player_stat_changed():
 			"HP", "MP":
 				live_stats[i] = get_new_stats.call(50, 0, i)
 				live_stats_changed.emit(0, 0)
-				stats
 			"SPD":
 				speed = get_new_stats.call(50, 150, i)
 
@@ -179,6 +195,7 @@ func skill_mage(skill: Skill):
 		Skill.ONE:
 			var ab = preload("res://scenes/skills/mage_skill1.tscn")
 			var v = ab.instantiate()
+			v.player = self
 			add_child(v)
 
 func skill_thief(skill: Skill):

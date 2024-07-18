@@ -22,3 +22,7 @@ func _on_quit_button_pressed():
 func _on_timer_timeout():
 	pressed_2times = false
 	$CanvasLayer/VBOXContainer/Confirm.visible = false
+
+
+func _on_credits_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/levels/credits.tscn")

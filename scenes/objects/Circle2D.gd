@@ -5,6 +5,7 @@ class_name MageSkill1
 @export var radius := 10.0
 var av := false
 @onready var area_2d: Area2D = $Area2D
+var player: Player
 
 func _draw():
 	draw_circle(Vector2.ZERO, radius, color)
@@ -16,6 +17,7 @@ func _input(event):
 			if i is Enemy:
 				i.hp -= 40
 		queue_free()
+		player.casting_skill = false
 
 
 func _process(delta):

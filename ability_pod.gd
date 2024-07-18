@@ -1,16 +1,16 @@
 extends Panel
 class_name AbilityPod
 
-var texture: CompressedTexture2D
-var hotkey := ""
-@onready var texture_rect: TextureRect = %TextureRect
-@onready var label = %Label
-@onready var cooldown_overlay = $ColorRect
-@onready var cooldown_text = %CooldownText
+@export var texture: CompressedTexture2D
+@export var hotkey := ""
+#var cooldown := 0.05
+
 
 func _enter_tree():
-	%TextureRect.texture = texture
-	%Label.text = hotkey
+	$CenterContainer/TextureRect.texture = texture
+	$ColorRect/Panel/Label.text = hotkey
+	#$Timer.wait_time = cooldown
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

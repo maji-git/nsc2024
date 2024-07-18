@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://ce47tk5b0g4t2"]
+
+[ext_resource type="Script" path="res://resources/item.gd" id="1_bbb1x"]
+[ext_resource type="Texture2D" uid="uid://dlep4lm3hlf4w" path="res://assets/key_big.png" id="1_oswbw"]
+[ext_resource type="PackedScene" uid="uid://d24bhhvija0gu" path="res://resources/items/Key.tscn" id="2_ts27l"]
+
+[resource]
+script = ExtResource("1_bbb1x")
+name = "Key"
+scene = ExtResource("2_ts27l")
+icon = ExtResource("1_oswbw")

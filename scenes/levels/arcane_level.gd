@@ -1,13 +1,10 @@
 class_name ArcaneLevel
 extends Node2D
 
+@onready var monster_arcane_room: MonsterArcaneRoom = $ArcaneRoom
+@export var player: Player
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#var arcane_room1 := ArcaneRoom.new(false)
-	#add_child(arcane_room1)
-	pass
+	print('arcane lvl: ', player)
+	monster_arcane_room.player = player
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

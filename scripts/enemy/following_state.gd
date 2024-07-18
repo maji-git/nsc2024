@@ -2,7 +2,7 @@ extends State
 class_name EnemyFollowingState
 
 
-var spd := 40
+var spd := 100
 @export var enemy: Enemy
 @export var player: Player
 
@@ -12,5 +12,9 @@ func enter():
 
 func physics_process(delta):
 	var dir := player.global_position - enemy.global_position
+	if dir >= Vector2.RIGHT:
+		enemy.animated_sprite_2d.flip_h = false
+	else:
+		enemy.animated_sprite_2d.flip_h = true
 	enemy.velocity = dir.normalized() * spd
 

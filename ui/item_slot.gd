@@ -11,6 +11,7 @@ func _item_set(item: Item):
 	current_item = item
 	print("%s added" % item.name)
 	%TextureRect.texture = item.icon
+	tooltip_text = item.name
 
 func _ready():
 	if current_item:

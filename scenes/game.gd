@@ -1,6 +1,6 @@
 extends Node
 
-@onready var main_game = %MainGame
+@onready var main_game = $MainGame
 @onready var class_select = %ClassSelectWindow
 
 signal game_started(player_class: GlobalUtils.CharactorClass)

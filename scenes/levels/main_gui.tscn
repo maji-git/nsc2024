@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnvrpqgoxo41k"]
+[gd_scene load_steps=6 format=3 uid="uid://bnvrpqgoxo41k"]
 
 [ext_resource type="Script" path="res://scenes/levels/gui_controller.gd" id="1_2uar2"]
 [ext_resource type="PackedScene" uid="uid://b1p0urj2r281" path="res://ui/inventory.tscn" id="2_j4a2o"]
+[ext_resource type="PackedScene" uid="uid://j7jubt6fbsdc" path="res://ability_pod.tscn" id="2_rakiw"]
+[ext_resource type="Texture2D" uid="uid://bxcgkesvohklb" path="res://assets/abilities/researcher/Z.PNG" id="3_johxo"]
+[ext_resource type="Texture2D" uid="uid://c4no3voq57286" path="res://assets/abilities/researcher/X.png" id="4_fiupw"]
 
 [node name="MainGUI" type="CanvasLayer"]
 script = ExtResource("1_2uar2")
@@ -57,9 +60,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -239.0
+offset_left = -126.0
 offset_top = -77.0
-offset_right = 239.0
+offset_right = 126.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -74,8 +77,18 @@ grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="AbilitiesPanel/CenterContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 64
+theme_override_constants/h_separation = 76
 columns = 8
+
+[node name="AbilityPod" parent="AbilitiesPanel/CenterContainer/GridContainer" instance=ExtResource("2_rakiw")]
+layout_mode = 2
+texture = ExtResource("3_johxo")
+hotkey = "X"
+
+[node name="AbilityPod2" parent="AbilitiesPanel/CenterContainer/GridContainer" instance=ExtResource("2_rakiw")]
+layout_mode = 2
+texture = ExtResource("4_fiupw")
+hotkey = "C"
 
 [node name="InventoryPanel" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -107,7 +120,7 @@ columns = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InventoryPanel/CenterContainer/Grid"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer"]
 layout_mode = 2
@@ -115,6 +128,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_constants/separation = 11
 alignment = 1
+
+[node name="Button" type="Button" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go to Title Screen"
 
 [node name="HContainer" type="HBoxContainer" parent="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -232,18 +249,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="InventoryPanel/CenterContainer/Grid"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-alignment = 1
-
-[node name="AbilitiesRow1" type="GridContainer" parent="InventoryPanel/CenterContainer/Grid/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-columns = 3
-
 [node name="DeathOverlay" type="Panel" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -286,6 +291,7 @@ theme_override_font_sizes/font_size = 35
 text = "OK"
 
 [connection signal="send_player_inst" from="." to="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/ItemGrid" method="_on_main_gui_send_player_inst"]
+[connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/HPUpgrade/HPUpgradeButton" to="." method="_on_hp_upgrade_button_pressed"]
 [connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/MPUpgrade/MPUpgradeButton" to="." method="_on_mp_upgrade_button_pressed"]
 [connection signal="pressed" from="InventoryPanel/CenterContainer/Grid/HBoxContainer/VBoxContainer/HContainer/VBoxContainer/ATKUpgrade/ATKUpgradeButton" to="." method="_on_atk_upgrade_button_pressed"]

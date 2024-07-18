@@ -126,28 +126,28 @@ func _on_button_pressed():
 	
 
 func update_abilities(classname: String):
-	var a = DirAccess.get_files_at("res://assets/abilities/%s" % classname.to_lower())
-	var b: Array[String] = []
-	for i in range(a.size()):
-		if i % 2 != 0:
-			b.append(a[i].split(".import")[0])
-			print(a[i].split(".import")[0])
-	
-	b.sort()
-	for i in range(b.size()):
-		var bar = preload("res://ability_pod.tscn")
-		var barr := bar.instantiate() as AbilityPod
-		barr.texture = load("res://assets/abilities/%s/%s" % [classname.to_lower(), b[i]])
-		print("adding: %s" % b[i])
-		barr.hotkey = b[i].split(".")[0]
-		
-		var arr = preload("res://ability_grid.tscn")
-		var arrr := arr.instantiate() as AbilityGrid
-		arrr.txt = b[i].split(".")[0]
-		arrr.txture = load("res://assets/abilities/%s/%s" % [classname.to_lower(), b[i]])
-		
-		$InventoryPanel/CenterContainer/Grid/VBoxContainer2/AbilitiesRow1.add_child(arrr)
-		$AbilitiesPanel/CenterContainer/GridContainer.add_child(barr)
+	#var a = DirAccess.get_files_at("res://assets/abilities/%s" % classname.to_lower())
+	#var b: Array[String] = []
+	#for i in range(a.size()):
+		#if i % 2 != 0:
+			#b.append(a[i].split(".import")[0])
+			#print(a[i].split(".import")[0])
+	#
+	#b.sort()
+	#for i in range(b.size()):
+		#var bar = preload("res://ability_pod.tscn")
+		#var barr := bar.instantiate() as AbilityPod
+		#barr.texture = load("res://assets/abilities/%s/%s" % [classname.to_lower(), b[i]])
+		#print("adding: %s" % b[i])
+		#barr.hotkey = b[i].split(".")[0]
+		#
+		#var arr = preload("res://ability_grid.tscn")
+		#var arrr := arr.instantiate() as AbilityGrid
+		#arrr.txt = b[i].split(".")[0]
+		#arrr.txture = load("res://assets/abilities/%s/%s" % [classname.to_lower(), b[i]])
+		#
+		#$InventoryPanel/CenterContainer/Grid/VBoxContainer2/AbilitiesRow1.add_child(arrr)
+		#$AbilitiesPanel/CenterContainer/GridContainer.add_child(barr)
 	
 	var bar = preload("res://ability_pod.tscn")
 	var barr := bar.instantiate() as AbilityPod
@@ -155,4 +155,8 @@ func update_abilities(classname: String):
 	print("adding: backpack")
 	barr.hotkey = "E"
 	$AbilitiesPanel/CenterContainer/GridContainer.add_child(barr)
-	
+	pass
+
+
+func _on_area_2d_body_entered(body):
+	pass # Replace with function body.

@@ -3,6 +3,7 @@ class_name EnemyAttackingState
 
 signal attacked(dmg: int)
 
+@export var enemy: Enemy
 @export var player: Player
 @onready var attack_cooldown = $"../../AttackCooldown"
 var is_on_cd := false
@@ -16,7 +17,7 @@ func physics_process(_delta):
 		return
 	
 	attack_cooldown.start()
-	attacked.emit(0)
+	attacked.emit(5)
 	is_on_cd = true
 
 

@@ -12,8 +12,6 @@ var inv = {
 
 func _ready():
 	add_slots()
-	add(load("res://resources/items/copper.tres"))
-	
 
 func add_slots():
 	var items: Array[Item] = []
