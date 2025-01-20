@@ -7,4 +7,3 @@ extends Node2D
 func _ready():
 	print('arcane lvl: ', player)
 	monster_arcane_room.player = player
-

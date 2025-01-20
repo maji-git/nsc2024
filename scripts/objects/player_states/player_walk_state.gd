@@ -8,7 +8,8 @@ func enter():
 
 
 func physics_process(_delta):
-	player.velocity = player.dir * player.speed
+	if player.is_local:
+		player.velocity = player.dir * player.speed
 	match player.dir:
 		Vector2.RIGHT:
 			player.animated_sprite.play("side_walk")

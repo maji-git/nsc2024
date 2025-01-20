@@ -20,119 +20,85 @@
 texture = ExtResource("2_gso5j")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.96875, -16, 6.90625, 16, 7.09375, 16, 6.09375, 16, -16, 14.875, -16, 15.125, 5.84375)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ket4"]
 texture = ExtResource("3_3o6t0")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 15.2188, 15.125, 14.9063, 15, 5.96875, 16, 5.84375, 16, 14.9063, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj0fq"]
 texture = ExtResource("4_5yxye")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 14.9782, -16, 16, 16, 16, 16, 14.9376, -16, 14.9376)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hfd3e"]
 texture = ExtResource("5_4w5uu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.78125, -15, 5.96875, -15, 15.0938, 16, 14.9063, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ngkp"]
 texture = ExtResource("6_gw1hn")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -15.125, -16, -15, 5.78125, 16, 6.09375, 16, 6.96875, -16, 6.84375, -16, -5.03125)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tj1sn"]
 texture = ExtResource("7_pcbvg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -5.03125, 16, 16, 14.9375, 16, 15, -5.03125, -16, -5.03125)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blqoh"]
 texture = ExtResource("8_yyxmd")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -15.125, -16, 16, -16, 16, -5.09375, -16, -5.03125, -16, -12.0938)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_syyrk"]
 texture = ExtResource("9_g7yh1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -5.09375, -16, -5.03125)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d35ja"]
 texture = ExtResource("10_b425n")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -5.09375, -16, -5.09375)
 1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -5.03125, -14.875, -4.96875, -15.1875, 16, -16, 16, -16, -5.09375)
 2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -5.09375, -15, -5.15625, -15.0625, 15.0313, 16, 15.1563, 16, 16, -15, 16, -16, 16, -16, -5.03125)
 3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -5.03125, 16, 16, -16, 16, -16, 15.0313, 15.125, 14.9688, 15.0625, -5.09375, -16, -5.03125)
 4:0/0 = 0
-4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:0/0/physics_layer_0/angular_velocity = 0.0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -5.03125, 16, 16, -16, 16, -16, 15.0313, 15.125, 14.9688, 15.0625, -5.09375, -16, -5.03125)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0nvkr"]
 texture = ExtResource("11_detyi")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -15.0938, -15.125, -15.0938, -15.0625, 14.9063, -14.9375, 16, -16, 16, -16, 3.34375, -16, -5.03125)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hp2qm"]
 texture = ExtResource("12_1gbsi")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -15.0938, -15.125, -15.0938, -15.0625, 14.9063, -14.9375, 16, -16, 16, -16, 3.34375, -16, -5.03125)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5cofe"]
 texture = ExtResource("13_jfxv3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6ig1"]
 texture = ExtResource("14_60s4f")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.96875, 16, 5.90625, 16, 6.90625, -16, 6.84375)
 
 [sub_resource type="TileSet" id="TileSet_kb26g"]

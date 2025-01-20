@@ -4,6 +4,10 @@ extends Control
 @export var next_scene: PackedScene
 var pressed_2times := false
 
+func _ready() -> void:
+	if OS.has_feature("server"):
+		_on_play_button_pressed()
+
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_packed(next_scene)

@@ -17,4 +17,3 @@ func physics_process(delta):
 	else:
 		enemy.animated_sprite_2d.flip_h = true
 	enemy.velocity = dir.normalized() * spd
-

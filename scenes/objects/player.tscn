@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cfawdqis7kof7"]
+[gd_scene load_steps=20 format=3 uid="uid://cfawdqis7kof7"]
 
 [ext_resource type="Script" path="res://scripts/objects/player.gd" id="1_giuys"]
 [ext_resource type="Script" path="res://scripts/objects/state_machine.gd" id="3_7lmgc"]
 [ext_resource type="Script" path="res://scripts/objects/player_states/player_idle_state.gd" id="4_8ecxp"]
 [ext_resource type="Script" path="res://scripts/objects/player_states/player_walk_state.gd" id="5_u506u"]
+[ext_resource type="PackedScene" uid="uid://dip3rpw51ckit" path="res://scenes/net/main_cam.tscn" id="6_2fp4n"]
 [ext_resource type="Texture2D" uid="uid://cqemqq7fwb814" path="res://assets/player.png" id="6_pgqk4"]
 
 [sub_resource type="Curve" id="Curve_vcgn1"]
@@ -110,6 +111,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k4r8o"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:player_class")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 5
 collision_mask = 5
@@ -151,6 +160,28 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_i2hu6")
 animation = &"back_walk"
 autoplay = "front_idle"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_k4r8o")
+
+[node name="PlayerID" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -47.0
+offset_right = 34.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "player id"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MainCam" parent="." instance=ExtResource("6_2fp4n")]
+enabled = false
 
 [connection signal="live_stats_changed" from="." to="." method="_on_live_stats_changed"]
 [connection signal="player_died" from="." to="." method="_on_player_died"]

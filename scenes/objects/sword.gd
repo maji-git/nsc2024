@@ -8,15 +8,22 @@ func _ready():
 	%Hitbox.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _process(_delta):
+	if !player.is_local:
+		return
 	look_at(get_global_mouse_position())
 
 func _input(event):
+	if !player.is_local:
+		return
 	if event.is_action_pressed("primary attack"):
 		if !attacking:
-			%Hitbox.process_mode = Node.PROCESS_MODE_ALWAYS
-			$AnimationPlayer.play("sweep")
-			attacking = true
+			rpc("sweep")
 
+@rpc("call_local", "reliable", "authority")
+func sweep():
+	%Hitbox.process_mode = Node.PROCESS_MODE_ALWAYS
+	$AnimationPlayer.play("sweep")
+	attacking = true
 
 func _on_animation_player_finished(anim_name: String):
 	if anim_name == "sweep":
@@ -25,7 +32,8 @@ func _on_animation_player_finished(anim_name: String):
 
 
 func _on_hitbox_body_entered(body):
-	if !body.is_in_group("Player"):
+	if !player.is_local:
+		return
+	if body is Enemy:
 		var enemy: Enemy = body as Enemy
-		enemy.hp -= damage
-
+		enemy.take_damage(damage)

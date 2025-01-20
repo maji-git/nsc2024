@@ -23,7 +23,7 @@ enum Skill {ONE, TWO, THREE, C, X, Z}
 var dir := Vector2.ZERO
 var last_dir := Vector2.ZERO
 var casting_skill := false
-var player_class: GlobalUtils.CharactorClass
+@export var player_class: GlobalUtils.CharactorClass
 var base_stats := {}
 var initial_stats := {}
 var stats_multiplier := {}
@@ -34,6 +34,9 @@ var intial_live_stats := { "HP": 0, "MP": 0 }
 const xp_data_path := "res://scripts/objects/xp_data.json"
 var curr_skill: Skill
 var game_ended = false
+var is_local: bool = false
+var peer_id: int
+@export var location: String = "overworld"
 
 var xp_data = {}
 var lvl := 1:
@@ -95,6 +98,8 @@ func _on_main_gui_hp_lvl_up():
 
 
 func _input(event):
+	if !is_local:
+		return
 	#if event.is_action_pressed("skill 1"):
 		#if !casting_skill:
 			#print('casting')
@@ -122,8 +127,12 @@ func _input(event):
 
 
 func _ready():
+	$PlayerID.text = str(name)
+	
 	xp_data = get_xp_data()
 	print(xp_data)
+	
+	_on_player_class_selected(GlobalUtils.CharactorClass.WARRIOR)
 
 
 func _on_player_class_selected(player_class: GlobalUtils.CharactorClass):
@@ -131,6 +140,7 @@ func _on_player_class_selected(player_class: GlobalUtils.CharactorClass):
 	var stats_resource := load("res://resources/classes/%s.tres" % classname.to_lower()) as ClassStats 
 	var weapon := stats_resource.weapon.instantiate()
 	weapon.player = self
+	weapon.set_multiplayer_authority(peer_id)
 	add_child(weapon)
 	stats_resource.set_base_stats(self)
 	stats = base_stats
@@ -143,6 +153,8 @@ func _on_player_class_selected(player_class: GlobalUtils.CharactorClass):
 
 
 func _physics_process(_delta):
+	if !is_local:
+		return
 	dir = Input.get_vector("move left", "move right", "move up", "move down")
 	move_and_slide()
 

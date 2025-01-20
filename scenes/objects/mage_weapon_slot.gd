@@ -15,7 +15,7 @@ func _input(event):
 	if event.is_action_pressed("primary attack"):
 		print(curr_body)
 		if curr_body and !player.casting_skill:
-			curr_body[0].hp -= player.stats["ATK"] * atk
+			curr_body[0].take_damage(player.stats["ATK"] * atk)
 			#add_child(praticle)
 			#praticle.dir = (curr_body[0].global_position - player.global_position).normalized()
 			#praticle.flying = true
@@ -38,4 +38,3 @@ func _on_hitbox_body_exited(body):
 	#praticle.queue_free()
 	#var a = preload("res://mage_attack_particle.tscn")
 	#praticle = a.instantiate()
-

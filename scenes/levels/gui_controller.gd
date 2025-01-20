@@ -18,6 +18,15 @@ var intial_lvl_max_xp: int = 0
 func _ready():
 	inventory_panel.visible = inv_opened
 
+func init_gui():
+	player_instance = gv.local_player
+	gv.local_player.player_class_selected.connect(_on_player_player_class_selected)
+	gv.local_player.xp_changed.connect(_on_player_xp_changed)
+	gv.local_player.player_base_stats_init.connect(_on_player_player_base_stats_init)
+	gv.local_player.stat_point_changed.connect(_on_player_stat_point_changed)
+	gv.local_player.player_stat_changed.connect(_on_player_player_stat_changed)
+	gv.local_player.live_stats_changed.connect(_on_player_live_stats_changed)
+
 
 func _on_main_game_inventory_toggled():
 	inv_opened = !inv_opened
@@ -48,6 +57,7 @@ func _on_player_xp_changed(curr_xp: String, max_lvl_xp: String):
 
 func _on_player_player_class_selected(player_class):
 	var inst := GlobalUtils.new()
+	print("LOADZ")
 	%ClassLabel.text = "Class: %s" % inst.get_player_classnames(player_class)
 
 

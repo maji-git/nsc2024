@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bx6xfbfunhwtn"]
+[gd_scene load_steps=22 format=3 uid="uid://bx6xfbfunhwtn"]
 
 [ext_resource type="Script" path="res://monster.gd" id="1_b3m2r"]
 [ext_resource type="Script" path="res://scripts/objects/state_machine.gd" id="2_omos8"]
@@ -86,6 +86,14 @@ bg_color = Color(0.101961, 0.101961, 0.101961, 0.470588)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3qrp"]
 bg_color = Color(1, 0.0431373, 0.329412, 1)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vks6n"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:hp")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 5
 script = ExtResource("1_b3m2r")
@@ -160,6 +168,9 @@ offset_bottom = 11.0
 scale = Vector2(1, 1.00772)
 size_flags_horizontal = 4
 text = "+200 XP"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vks6n")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="attacked" from="StateMachine/Attack" to="." method="_on_attack_attacked"]

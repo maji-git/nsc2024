@@ -15,7 +15,7 @@ func _input(event):
 	if event.is_action_pressed("primary attack"):
 		for i in area_2d.get_overlapping_bodies():
 			if i is Enemy:
-				i.hp -= 40
+				i.take_damage(40)
 		queue_free()
 		player.casting_skill = false
 
