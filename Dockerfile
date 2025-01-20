@@ -29,7 +29,7 @@ RUN apt update -y \
     && apt install -y expect-dev \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /app/build/linux/ /app
+COPY /app/build/linux/ /app
 
 # Unbuffer output so the logs get flushed
 CMD ["sh", "-c", "unbuffer /app/game.x86_64 --verbose --headless -- --server | cat"]
